@@ -1,6 +1,7 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import { Button, Input } from "components/elements";
 import { useFormik } from "formik";
+import { useCallback } from "react";
 
 interface IProps {}
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginForm = () => {
   const classes = useStyles();
-  const { values, handleChange, handleSubmit } = useFormik({
+  const { values, handleSubmit, setFieldValue } = useFormik({
     initialValues: {
       username: "",
       password: "",
@@ -21,6 +22,13 @@ const LoginForm = () => {
       console.log({ values });
     },
   });
+
+  const setUsername = useCallback((value: string) => {
+    setFieldValue("username", value);
+  }, []);
+  const setPassword = useCallback((value: string) => {
+    setFieldValue("password", value);
+  }, []);
 
   return (
     <form>
@@ -34,7 +42,7 @@ const LoginForm = () => {
         variant="outlined"
         className={classes.mt2}
         value={values.username}
-        onChange={handleChange}
+        onChange={setUsername}
       />
       <Input
         fullWidth
@@ -44,7 +52,7 @@ const LoginForm = () => {
         type="password"
         className={classes.mt2}
         value={values.password}
-        onChange={handleChange}
+        onChange={setPassword}
       />
       <Button
         fullWidth

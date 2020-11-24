@@ -16,7 +16,15 @@ const Login = () => {
   return (
     <Container maxWidth="xs" className={classes.container}>
       <Paper className={classes.paper}>
-        <LoginForm />
+        <LoginForm
+          initValue={{
+            username: "",
+            password: "",
+          }}
+          onLogin={(value) => {
+            console.log({ value });
+          }}
+        />
       </Paper>
     </Container>
   );

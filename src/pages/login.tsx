@@ -1,9 +1,9 @@
-import { Container, Paper, makeStyles } from "@material-ui/core";
+import { Container, makeStyles, Paper, Typography } from "@material-ui/core";
 import { LoginForm } from "components/forms";
+import { useAuth } from "libs/context/AuthContext";
 import { reaction } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/login";
-import { useAuth } from "libs/context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -29,6 +29,9 @@ const Login = () => {
   return (
     <Container maxWidth="xs" className={classes.container}>
       <Paper className={classes.paper}>
+        <Typography variant="h5" align="center">
+          Login system
+        </Typography>
         <LoginForm
           initValue={{
             username: "",

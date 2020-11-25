@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "libs/cookies";
+import { getCookie, removeCookie, setCookie } from "libs/cookies";
 import { applySnapshot, Instance } from "mobx-state-tree";
 import { useMemo } from "react";
 import { Auth, Authorize } from "./Store";
@@ -20,6 +20,7 @@ export const AuthStore = Auth.actions((self) => {
   const deAuthorize = () => {
     applySnapshot(self.authorization, {});
     self.isAuthenticated = false;
+    removeCookie("token");
   };
 
   const load = (ctx?: any) => {

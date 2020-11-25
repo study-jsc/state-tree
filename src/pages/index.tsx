@@ -1,7 +1,8 @@
 import Head from "next/head";
+import { withAuthentication } from "libs/auth/withAuthentication";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -63,3 +64,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withAuthentication(Home);

@@ -1,5 +1,6 @@
 import { TextField } from "@material-ui/core";
 import { useField } from "formik";
+import { memo } from "react";
 
 interface IProps {
   name: string;
@@ -10,15 +11,11 @@ interface IProps {
   variant?: "filled" | "outlined" | "standard";
 }
 
-const FormikInput: React.FC<IProps> = ({
-  name,
-  label,
-  type,
-  className,
-  fullWidth,
-  variant,
-}) => {
-  const [field, meta] = useField({ name });
+const FormikInput: React.FC<IProps> = memo((props) => {
+  const { name, label, type, className, fullWidth, variant } = props;
+  const [field, meta] = useField(props);
+
+  console.log("Re-render ", name);
 
   return (
     <TextField
@@ -34,6 +31,6 @@ const FormikInput: React.FC<IProps> = ({
       variant={variant}
     />
   );
-};
+});
 
 export { FormikInput };

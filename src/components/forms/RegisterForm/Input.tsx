@@ -9,6 +9,7 @@ interface IInputProps {
   helperText?: string;
   error?: boolean;
   fullWidth?: boolean;
+  touched?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,6 +25,7 @@ const Input: React.FC<IInputProps> = memo(
     type,
     helperText,
     error,
+    touched,
     onChange,
     onBlur,
   }) => {
@@ -37,8 +39,8 @@ const Input: React.FC<IInputProps> = memo(
         type={type}
         label={label}
         value={value}
-        error={error}
-        helperText={helperText}
+        error={touched && error}
+        helperText={touched && helperText}
         onChange={onChange}
         onBlur={onBlur}
       />

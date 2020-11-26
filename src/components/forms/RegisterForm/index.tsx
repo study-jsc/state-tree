@@ -47,8 +47,9 @@ const RegisterForm = () => {
           <Input
             fullWidth
             label="First name"
-            error={formik.touched.firstName && !!formik.errors.firstName}
-            helperText={formik.touched.firstName ? formik.errors.firstName : ""}
+            touched={formik.touched.firstName}
+            error={!!formik.errors.firstName}
+            helperText={formik.errors.firstName}
             {...formik.getFieldProps("firstName")}
           />
         </Grid>
@@ -56,8 +57,9 @@ const RegisterForm = () => {
           <Input
             fullWidth
             label="Last name"
-            error={formik.touched.lastName && !!formik.errors.lastName}
-            helperText={formik.touched.lastName ? formik.errors.lastName : ""}
+            touched={formik.touched.lastName}
+            error={!!formik.errors.lastName}
+            helperText={formik.errors.lastName}
             {...formik.getFieldProps("lastName")}
           />
         </Grid>
@@ -65,8 +67,9 @@ const RegisterForm = () => {
           <Input
             fullWidth
             label="Email"
-            error={formik.touched.email && !!formik.errors.email}
-            helperText={formik.touched.email ? formik.errors.email : ""}
+            touched={formik.touched.email}
+            error={!!formik.errors.email}
+            helperText={formik.errors.email}
             {...formik.getFieldProps("email")}
           />
         </Grid>
@@ -74,8 +77,9 @@ const RegisterForm = () => {
           <Input
             fullWidth
             label="Password"
-            error={formik.touched.password && !!formik.errors.password}
-            helperText={formik.touched.password ? formik.errors.password : ""}
+            touched={formik.touched.password}
+            error={!!formik.errors.password}
+            helperText={formik.errors.password}
             {...formik.getFieldProps("password")}
           />
         </Grid>

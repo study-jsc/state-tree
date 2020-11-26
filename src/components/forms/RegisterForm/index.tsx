@@ -141,7 +141,13 @@ const RegisterForm = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button fullWidth color="primary" variant="contained" type="submit">
+          <Button
+            fullWidth
+            color="primary"
+            variant="contained"
+            type="submit"
+            disabled={formik.isSubmitting}
+          >
             Register
           </Button>
         </Grid>

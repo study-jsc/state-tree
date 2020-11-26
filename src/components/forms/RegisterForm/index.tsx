@@ -8,6 +8,14 @@ interface IFormValue {
   lastName: string;
   email: string;
   password: string;
+  address: {
+    country: string;
+    city: string;
+    location: {
+      lng: number;
+      lat: number;
+    };
+  };
 }
 type TError = Partial<Record<keyof IFormValue, string>>;
 
@@ -35,6 +43,14 @@ const RegisterForm = () => {
       lastName: "",
       email: "",
       password: "",
+      address: {
+        country: "vi",
+        city: "HN",
+        location: {
+          lat: 1,
+          lng: 0,
+        },
+      },
     },
     validate: validators,
     onSubmit: (value) => {
@@ -82,6 +98,46 @@ const RegisterForm = () => {
             error={!!formik.errors.password}
             helperText={formik.errors.password}
             {...formik.getFieldProps("password")}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Input
+            fullWidth
+            label="Country"
+            touched={formik.touched.address?.country}
+            error={!!formik.errors.address?.country}
+            helperText={formik.errors.address?.country}
+            {...formik.getFieldProps("address.country")}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Input
+            fullWidth
+            label="City"
+            touched={formik.touched.address?.city}
+            error={!!formik.errors.address?.city}
+            helperText={formik.errors.address?.city}
+            {...formik.getFieldProps("address.city")}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Input
+            fullWidth
+            label="Long"
+            touched={formik.touched.address?.location?.lng}
+            error={!!formik.errors.address?.location?.lng}
+            helperText={formik.errors.address?.location?.lng}
+            {...formik.getFieldProps("address.location.lng")}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Input
+            fullWidth
+            label="Lat"
+            touched={formik.touched.address?.location?.lat}
+            error={!!formik.errors.address?.location?.lat}
+            helperText={formik.errors.address?.location?.lat}
+            {...formik.getFieldProps("address.location.lat")}
           />
         </Grid>
         <Grid item xs={12}>

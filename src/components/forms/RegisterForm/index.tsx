@@ -1,5 +1,6 @@
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import { useFormik } from "formik";
+import Link from "next/link";
 import { Input } from "./Input";
 
 interface IFormValue {
@@ -87,6 +88,11 @@ const RegisterForm = () => {
           <Button fullWidth color="primary" variant="contained" type="submit">
             Register
           </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
         </Grid>
       </Grid>
     </form>

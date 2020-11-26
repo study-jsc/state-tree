@@ -1,7 +1,8 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 import { FormikInput } from "components/elements";
 import { Form, Formik } from "formik";
 import { IAuthor } from "@types";
+import Link from "next/link";
 
 interface IProps {
   initValue: IAuthor;
@@ -20,34 +21,41 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm: React.FC<IProps> = ({ initValue, onLogin }) => {
   const classes = useStyles();
   return (
-    <Formik initialValues={initValue} onSubmit={onLogin}>
-      <Form>
-        <FormikInput
-          fullWidth
-          name="username"
-          variant="outlined"
-          label="Username"
-          className={classes.input}
-        />
-        <FormikInput
-          fullWidth
-          name="password"
-          variant="outlined"
-          label="Password"
-          className={classes.input}
-          type="password"
-        />
-        <Button
-          fullWidth
-          type="submit"
-          className={classes.btn}
-          color="primary"
-          variant="contained"
-        >
-          Login
-        </Button>
-      </Form>
-    </Formik>
+    <>
+      <Formik initialValues={initValue} onSubmit={onLogin}>
+        <Form>
+          <FormikInput
+            fullWidth
+            name="username"
+            variant="outlined"
+            label="Username"
+            className={classes.input}
+          />
+          <FormikInput
+            fullWidth
+            name="password"
+            variant="outlined"
+            label="Password"
+            className={classes.input}
+            type="password"
+          />
+          <Button
+            fullWidth
+            type="submit"
+            className={classes.btn}
+            color="primary"
+            variant="contained"
+          >
+            Login
+          </Button>
+        </Form>
+      </Formik>
+      <Box mt={3}>
+        <Link href="/register">
+          <a>Register</a>
+        </Link>
+      </Box>
+    </>
   );
 };
 
